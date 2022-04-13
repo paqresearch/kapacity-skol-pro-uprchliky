@@ -1,0 +1,1 @@
+(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[15],{8015:function(s,t,a){"use strict";a.r(t);var e=a(5893),i=(a(7294),a(4298)),n=a.n(i);t.default=function(){return"paqresearch.github.io"===window.location.host?(0,e.jsx)(n(),{"data-domain":"paqresearch.github.io",src:"https://plausible.io/js/plausible.js"}):null}},4298:function(s,t,a){s.exports=a(3573)}}]);
