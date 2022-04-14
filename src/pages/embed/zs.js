@@ -5,12 +5,18 @@ import { keyBy } from "lodash";
 
 import EmbedOrpMap from "../../embed/components/EmbedOrpMap";
 import { usePostMessageWithHeight } from "../../embed/hooks";
-import { useCapacitiesData, useKrajeData, useOrpData } from "../../data/hooks";
+import {
+  useCapacitiesData,
+  useKrajeData,
+  useOrpData,
+  usePrahaObvodyData,
+} from "../../data/hooks";
 import styles from "../../pages_styles/MapsInTabsEmbedPage.module.scss";
 
 export default function ZsEmbedPage({ baseUrl }) {
   const orpData = useOrpData(baseUrl);
   const krajeData = useKrajeData(baseUrl);
+  const prahaObvodyData = usePrahaObvodyData(baseUrl);
   const capacitiesData = useCapacitiesData(baseUrl);
   const { containerRef } = usePostMessageWithHeight(
     "paqresearch_kapacity-skol-pro-uprchliky_zs"
@@ -56,6 +62,7 @@ export default function ZsEmbedPage({ baseUrl }) {
           ? activeTabItem.map({
               orpData,
               krajeData,
+              prahaObvodyData,
               capacitiesData,
               selectedOrpId,
               setSelectedOrpId,
@@ -102,6 +109,7 @@ const tabs = [
 const ZsPrevisMap = ({
   orpData,
   krajeData,
+  prahaObvodyData,
   capacitiesData,
   selectedOrpId,
   setSelectedOrpId,
@@ -165,6 +173,7 @@ const ZsPrevisMap = ({
         <EmbedOrpMap
           orpData={orpData}
           krajeData={krajeData}
+          prahaObvodyData={prahaObvodyData}
           selectedOrpId={selectedOrpId}
           setSelectedOrpId={setSelectedOrpId}
           fillByOrpId={fillByOrpId}
@@ -175,7 +184,9 @@ const ZsPrevisMap = ({
                   {feature.properties.NAZEV}
                 </div>
                 <div className="tooltip-region">
-                  {feature.properties.VUSC_NAZEV}
+                  {feature.properties.VUSC_NAZEV
+                    ? feature.properties.VUSC_NAZEV
+                    : "Hlavní město Praha"}
                 </div>
               </div>
 
@@ -231,6 +242,7 @@ const ZsPrevisMap = ({
 const ZsPrevis1StupenMap = ({
   orpData,
   krajeData,
+  prahaObvodyData,
   capacitiesData,
   selectedOrpId,
   setSelectedOrpId,
@@ -297,6 +309,7 @@ const ZsPrevis1StupenMap = ({
         <EmbedOrpMap
           orpData={orpData}
           krajeData={krajeData}
+          prahaObvodyData={prahaObvodyData}
           selectedOrpId={selectedOrpId}
           setSelectedOrpId={setSelectedOrpId}
           fillByOrpId={fillByOrpId}
@@ -307,7 +320,9 @@ const ZsPrevis1StupenMap = ({
                   {feature.properties.NAZEV}
                 </div>
                 <div className="tooltip-region">
-                  {feature.properties.VUSC_NAZEV}
+                  {feature.properties.VUSC_NAZEV
+                    ? feature.properties.VUSC_NAZEV
+                    : "Hlavní město Praha"}
                 </div>
               </div>
 
@@ -368,6 +383,7 @@ const ZsPrevis1StupenMap = ({
 const ZsPrevis2StupenMap = ({
   orpData,
   krajeData,
+  prahaObvodyData,
   capacitiesData,
   selectedOrpId,
   setSelectedOrpId,
@@ -434,6 +450,7 @@ const ZsPrevis2StupenMap = ({
         <EmbedOrpMap
           orpData={orpData}
           krajeData={krajeData}
+          prahaObvodyData={prahaObvodyData}
           selectedOrpId={selectedOrpId}
           setSelectedOrpId={setSelectedOrpId}
           fillByOrpId={fillByOrpId}
@@ -444,7 +461,9 @@ const ZsPrevis2StupenMap = ({
                   {feature.properties.NAZEV}
                 </div>
                 <div className="tooltip-region">
-                  {feature.properties.VUSC_NAZEV}
+                  {feature.properties.VUSC_NAZEV
+                    ? feature.properties.VUSC_NAZEV
+                    : "Hlavní město Praha"}
                 </div>
               </div>
 
@@ -505,6 +524,7 @@ const ZsPrevis2StupenMap = ({
 const ZsZapsaniZNahlasenychMap = ({
   orpData,
   krajeData,
+  prahaObvodyData,
   capacitiesData,
   selectedOrpId,
   setSelectedOrpId,
@@ -568,6 +588,7 @@ const ZsZapsaniZNahlasenychMap = ({
         <EmbedOrpMap
           orpData={orpData}
           krajeData={krajeData}
+          prahaObvodyData={prahaObvodyData}
           selectedOrpId={selectedOrpId}
           setSelectedOrpId={setSelectedOrpId}
           fillByOrpId={fillByOrpId}
@@ -578,7 +599,9 @@ const ZsZapsaniZNahlasenychMap = ({
                   {feature.properties.NAZEV}
                 </div>
                 <div className="tooltip-region">
-                  {feature.properties.VUSC_NAZEV}
+                  {feature.properties.VUSC_NAZEV
+                    ? feature.properties.VUSC_NAZEV
+                    : "Hlavní město Praha"}
                 </div>
               </div>
 
@@ -622,6 +645,7 @@ const ZsZapsaniZNahlasenychMap = ({
 const ZsZapsaniMap = ({
   orpData,
   krajeData,
+  prahaObvodyData,
   capacitiesData,
   selectedOrpId,
   setSelectedOrpId,
@@ -659,7 +683,7 @@ const ZsZapsaniMap = ({
 
   return (
     <div className={styles.mapContainer}>
-      <h1>Ukrajinští žáci aktuálně zapsaní na&nbsp;ZŠ v&nbsp;ORP</h1>
+      <h1>Ukrajinští žáci aktuálně zapsaní na&nbsp;ZŠ</h1>
 
       <div className={styles.legend}>
         {categories.map((category) => (
@@ -677,6 +701,7 @@ const ZsZapsaniMap = ({
         <EmbedOrpMap
           orpData={orpData}
           krajeData={krajeData}
+          prahaObvodyData={prahaObvodyData}
           selectedOrpId={selectedOrpId}
           setSelectedOrpId={setSelectedOrpId}
           fillByOrpId={fillByOrpId}
@@ -687,7 +712,9 @@ const ZsZapsaniMap = ({
                   {feature.properties.NAZEV}
                 </div>
                 <div className="tooltip-region">
-                  {feature.properties.VUSC_NAZEV}
+                  {feature.properties.VUSC_NAZEV
+                    ? feature.properties.VUSC_NAZEV
+                    : "Hlavní město Praha"}
                 </div>
               </div>
 
@@ -697,20 +724,6 @@ const ZsZapsaniMap = ({
                   &nbsp;zapsaných ukrajinských žáků
                 </strong>
               </div>
-              {/* <div className="value-line">
-          {orpCapacityById[orpId].zs_kapacita.toLocaleString("cs-CZ")}{" "}
-          celkem míst v ZŠ
-        </div>
-        <div className="value-line">
-          {orpCapacityById[orpId].volna_mista_zs.toLocaleString(
-            "cs-CZ"
-          )}{" "}
-          volných míst
-        </div>
-        <div className="value-line">
-          {orpCapacityById[orpId].pocet_zs.toLocaleString("cs-CZ")}{" "}
-          základních škol
-        </div> */}
             </div>
           )}
         />

@@ -5,9 +5,11 @@ import csv
 import json
 import os
 from pprint import pprint
+from tkinter import E
 
 source_data_csv_path = os.path.join(os.path.dirname(__file__), 'Kapacity_s_tridami.csv')
 orp_csv_path = os.path.join(os.path.dirname(__file__), 'CIS0065_CS.csv')
+praha_obvody_csv_path = os.path.join(os.path.dirname(__file__), 'CIS0072_CS.csv')
 output_data_json_path = os.path.join(os.path.dirname(__file__), '..', 'public', 'capacities.json')
 
 if __name__ == "__main__":
@@ -20,6 +22,16 @@ if __name__ == "__main__":
 
         for row in reader:
             orp_list.append(row)
+
+    # Load Praha obvody list
+
+    praha_obvody_list = []
+
+    with open(praha_obvody_csv_path, mode='r', encoding='cp1250') as praha_obvody_csv_file:
+        reader = csv.DictReader(praha_obvody_csv_file, delimiter=',')
+
+        for row in reader:
+            praha_obvody_list.append(row)
 
     # Load source data
 
@@ -54,14 +66,22 @@ if __name__ == "__main__":
     for orp_list_item in orp_list:
         orp_code_to_ruian_code_map[orp_list_item['CHODNOTA']] = orp_list_item['KOD_RUIAN']
 
+    obvod_code_to_ruian_code_map = {}
+    for praha_obvody_list_item in praha_obvody_list:
+        obvod_code_to_ruian_code_map[praha_obvody_list_item['CHODNOTA']] = '99' + praha_obvody_list_item['KOD_RUIAN']
+
     for source_data_item in source_data:
         orp_code = source_data_item['orp_kod']
         orp_source_data = {k: source_data_item[k] for k in source_data_item.keys() - {None}}
 
-        if orp_code not in orp_code_to_ruian_code_map:
+        ruian_code = None
+        if orp_code == '0':
+            # Ignore orp code 0
             continue
-
-        ruian_code = orp_code_to_ruian_code_map[orp_code]
+        elif orp_code in orp_code_to_ruian_code_map:
+            ruian_code = orp_code_to_ruian_code_map[orp_code]
+        elif orp_code in obvod_code_to_ruian_code_map:    
+            ruian_code = obvod_code_to_ruian_code_map[orp_code]
 
         orp_output_data = collections.OrderedDict()
         orp_output_data['id'] = int(ruian_code)
@@ -80,26 +100,14 @@ if __name__ == "__main__":
             if key in ['ms_zapsani', 'ms_kapacity_duben', 'ms_kapacity_zari', 'ms_uprchliku', 'ms_previs', 'zs_zapsani', 'zs_kapacity_zari', 'zs_uprchliku', 'zs_previs', 'zs_previs_1_stupen', 'zs_previs_2_stupen']:
                 orp_output_data[key] = int(orp_source_data[key].replace(' ', ''))
 
-        output_data.append(orp_output_data)
+        # Temp fix Praha 4
+        if orp_code == '1104':
+            orp_output_data['zs_kapacity_zari'] = 244
+            orp_output_data['zs_previs'] = 319
+            orp_output_data['zs_previs_1_stupen'] = 178
+            orp_output_data['zs_previs_2_stupen'] = 141
 
-    # Hard-code Prague now
-    output_data.append({
-        'id': 19,
-        'ms_zapsani': 579,
-        'ms_kapacity_duben': 0,
-        'ms_kapacity_zari': 0,
-        'ms_uprchliku': 0,
-        'ms_zapsani_z_nahlasenych': 14,
-        'ms_previs': -2370,
-        'zs_zapsani': 4174,
-        'zs_kapacity_duben': 0,
-        'zs_kapacity_zari': 0,
-        'zs_uprchliku': 0,
-        'zs_zapsani_z_nahlasenych': 30,
-        'zs_previs_1_stupen': -1440,
-        'zs_previs_2_stupen': -1347,
-        'zs_previs': -2787,
-    })
+        output_data.append(orp_output_data)
 
     output_data = sorted(output_data, key=lambda item: int(item['id']))
 

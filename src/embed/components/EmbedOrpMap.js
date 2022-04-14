@@ -6,11 +6,13 @@ import { debounce } from "lodash";
 import { createPopper } from "@popperjs/core";
 
 import styles from "../styles/EmbedOrpMap.module.scss";
+import { svg } from "d3";
 
 export default function EmbedOrpMap({
   fillByOrpId,
   krajeData,
   orpData,
+  prahaObvodyData,
   renderTooltipContent,
   selectedOrpId,
   setSelectedOrpId,
@@ -41,7 +43,7 @@ export default function EmbedOrpMap({
   }, [onWindowResizeDebounced]);
 
   React.useEffect(() => {
-    if (!orpData || !krajeData) {
+    if (!orpData || !krajeData || !prahaObvodyData) {
       return;
     }
 
@@ -52,6 +54,7 @@ export default function EmbedOrpMap({
       height,
       orpData,
       krajeData,
+      prahaObvodyData,
       fillByOrpId,
       selectedOrpId,
       setSelectedOrpId,
@@ -62,6 +65,7 @@ export default function EmbedOrpMap({
     height,
     orpData,
     krajeData,
+    prahaObvodyData,
     fillByOrpId,
     selectedOrpId,
     setSelectedOrpId,
@@ -95,6 +99,7 @@ const renderD3Svg = ({
   height,
   orpData,
   krajeData,
+  prahaObvodyData,
   fillByOrpId,
   selectedOrpId,
   setSelectedOrpId,
@@ -102,6 +107,10 @@ const renderD3Svg = ({
 }) => {
   const orpGeoJson = topojson.feature(orpData, orpData.objects.tracts);
   const krajeGeoJson = topojson.feature(krajeData, krajeData.objects.tracts);
+  const prahaObvodyGeoJson = topojson.feature(
+    prahaObvodyData,
+    prahaObvodyData.objects.tracts
+  );
 
   const svgEl = d3.select(svgDomEl);
 
@@ -118,7 +127,8 @@ const renderD3Svg = ({
 
   svgEl
     .selectAll(".orp")
-    .data(orpGeoJson.features)
+    // Dont display ORP Hlavni mesto Praha
+    .data(orpGeoJson.features.filter((feature) => feature.id !== "19"))
     .enter()
     .append("path")
     .attr("d", pathGenerator)
@@ -157,9 +167,15 @@ const renderD3Svg = ({
       hideAllTooltips({ containerDomEl });
       if (selectedOrpId) {
         showTooltip({
-          referenceDomEl: svgEl.select(`.orp.orp-${selectedOrpId}`).node(),
+          referenceDomEl:
+            svgEl.select(`.orp.orp-${selectedOrpId}`).node() ||
+            svgEl.select(`.praha-obvod.praha-obvod-${selectedOrpId}`).node(),
           containerDomEl,
-          feature: orpGeoJson.features.find((f) => f.id === selectedOrpId),
+          feature:
+            orpGeoJson.features.find((f) => f.id === selectedOrpId) ||
+            prahaObvodyGeoJson.features.find(
+              (f) => prahaObvodOrpId(f) === selectedOrpId
+            ),
           renderTooltipContent,
         });
       }
@@ -178,17 +194,105 @@ const renderD3Svg = ({
     .attr("stroke-width", width > 600 ? 1.5 : 1.3)
     .attr("pointer-events", "none");
 
+  const prahaObvodyProjection = d3.geoMercator().fitExtent(
+    [
+      [width * 0.75, height * 0.02],
+      [width, height * 0.26],
+    ],
+    prahaObvodyGeoJson
+  );
+
+  const prahaObvodyPathGenerator = d3
+    .geoPath()
+    .projection(prahaObvodyProjection);
+
+  svgEl
+    .selectAll(".praha-obvod")
+    .data(prahaObvodyGeoJson.features)
+    .enter()
+    .append("path")
+    .attr("d", prahaObvodyPathGenerator)
+    .attr(
+      "class",
+      (feature) => `praha-obvod praha-obvod-${prahaObvodOrpId(feature)}`
+    )
+    .attr("fill", (feature) => fillByOrpId[prahaObvodOrpId(feature)])
+    .attr("opacity", (feature) =>
+      !selectedOrpId || prahaObvodOrpId(feature) === selectedOrpId ? 1 : 0.3
+    )
+    .attr("stroke", "#000000")
+    .attr("stroke-width", (feature) =>
+      prahaObvodOrpId(feature) === selectedOrpId ? 2 : 0.5
+    )
+    .on("click", function (e, feature) {
+      if (selectedOrpId !== prahaObvodOrpId(feature)) {
+        setSelectedOrpId(prahaObvodOrpId(feature));
+      } else {
+        setSelectedOrpId(null);
+      }
+    })
+    .on("mouseover", function (e, feature) {
+      if (
+        selectedOrpId !== null &&
+        prahaObvodOrpId(feature) !== selectedOrpId
+      ) {
+        e.currentTarget.setAttribute("opacity", 1);
+      }
+
+      hideAllTooltips({ containerDomEl });
+      showTooltip({
+        referenceDomEl: e.currentTarget,
+        containerDomEl,
+        feature,
+        renderTooltipContent,
+      });
+    })
+    .on("mouseout", function (e, feature) {
+      if (
+        selectedOrpId !== null &&
+        prahaObvodOrpId(feature) !== selectedOrpId
+      ) {
+        e.currentTarget.setAttribute("opacity", 0.3);
+      }
+
+      hideAllTooltips({ containerDomEl });
+      if (selectedOrpId) {
+        showTooltip({
+          referenceDomEl:
+            svgEl.select(`.orp.orp-${selectedOrpId}`).node() ||
+            svgEl.select(`.praha-obvod.praha-obvod-${selectedOrpId}`).node(),
+          containerDomEl,
+          feature:
+            orpGeoJson.features.find((f) => f.id === selectedOrpId) ||
+            prahaObvodyGeoJson.features.find(
+              (f) => prahaObvodOrpId(f) === selectedOrpId
+            ),
+          renderTooltipContent,
+        });
+      }
+    });
+
   if (selectedOrpId) {
     svgEl.select(`.orp.orp-${selectedOrpId}`).raise();
+    svgEl.select(`.praha-obvod.praha-obvod-${selectedOrpId}`).raise();
 
     showTooltip({
-      referenceDomEl: svgEl.select(`.orp.orp-${selectedOrpId}`).node(),
+      referenceDomEl:
+        svgEl.select(`.orp.orp-${selectedOrpId}`).node() ||
+        svgEl.select(`.praha-obvod.praha-obvod-${selectedOrpId}`).node(),
       containerDomEl,
-      feature: orpGeoJson.features.find((f) => f.id === selectedOrpId),
+      feature:
+        orpGeoJson.features.find((f) => f.id === selectedOrpId) ||
+        prahaObvodyGeoJson.features.find(
+          (f) => prahaObvodOrpId(f) === selectedOrpId
+        ),
       renderTooltipContent,
     });
   }
 };
+
+const prahaObvodOrpId = (feature) =>
+  parseInt("99" + String(feature.properties.KOD), 10);
 
 const showTooltip = ({
   referenceDomEl,
@@ -196,9 +300,11 @@ const showTooltip = ({
   feature,
   renderTooltipContent,
 }) => {
+  const orpId = feature.id ? feature.id : prahaObvodOrpId(feature);
+
   const tooltipEl = document.createElement("div");
   tooltipEl.classList.add("map-tooltip");
-  tooltipEl.classList.add(`map-tooltip-orp-${feature.id}`);
+  tooltipEl.classList.add(`map-tooltip-orp-${orpId}`);
   tooltipEl.innerHTML = `
     <div class="tooltip-arrow" data-popper-arrow></div>
     <div class="tooltip-content"></div>
@@ -206,7 +312,7 @@ const showTooltip = ({
   containerDomEl.append(tooltipEl);
 
   ReactDOM.render(
-    renderTooltipContent(feature.id, feature),
+    renderTooltipContent(orpId, feature),
     tooltipEl.querySelector(".tooltip-content")
   );
 

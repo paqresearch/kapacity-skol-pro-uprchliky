@@ -48,6 +48,22 @@ export const useKrajeData = (baseUrl) => {
   return krajeData;
 };
 
+export const usePrahaObvodyData = (baseUrl) => {
+  const [prahaObvodyData, setPrahaObvodyData] = React.useState(null);
+
+  React.useEffect(() => {
+    fetch(baseUrl + "/praha-obvody.topo.json").then((response) => {
+      if (response.ok) {
+        response.json().then((payload) => {
+          setPrahaObvodyData(payload);
+        });
+      }
+    });
+  }, []);
+
+  return prahaObvodyData;
+};
+
 export const useCapacitiesData = (baseUrl) => {
   const [capacitiesData, setCapacitiesData] = React.useState(null);
 
