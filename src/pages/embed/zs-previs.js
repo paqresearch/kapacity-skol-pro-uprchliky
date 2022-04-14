@@ -6,7 +6,7 @@ import { keyBy } from "lodash";
 import EmbedOrpMap from "../../embed/components/EmbedOrpMap";
 import { usePostMessageWithHeight } from "../../embed/hooks";
 import { useCapacitiesData, useKrajeData, useOrpData } from "../../data/hooks";
-import styles from "../../pages_styles/EmbedPage.module.scss";
+import styles from "../../pages_styles/SingleMapEmbedPage.module.scss";
 
 export default function ZsPrevisEmbedPage({ baseUrl }) {
   const orpData = useOrpData(baseUrl);
@@ -65,9 +65,9 @@ export default function ZsPrevisEmbedPage({ baseUrl }) {
         <p className={styles.byline}>
           Počítáme s&nbsp;75&nbsp;%&nbsp;efektivitou využití aktuálně volných
           a&nbsp;možných nových míst, místa ve&nbsp;speciálních třídách
-          s&nbsp;efektivitou využití 10&nbsp;%. Kapacity k&nbsp;září 2022 se
-          mohou ještě měnit. Zápisy uvažujeme všech 7–15letých podle nahlášených
-          pobytů MV&nbsp;ČR k&nbsp;12.4.2022.
+          s&nbsp;efektivitou využití 10&nbsp;%. Zápisy uvažujeme všech
+          7–15letých podle nahlášených pobytů MV&nbsp;ČR k&nbsp;12.4.2022
+          s&nbsp;výjimkou 1168 osob bez určeného pobytu.
         </p>
 
         <div className={styles.legend}>
@@ -152,7 +152,7 @@ export async function getStaticProps() {
     props: {
       baseUrl:
         process.env.NODE_ENV === "production"
-          ? "https://vlki.github.io/paq-ukrajina-mapy"
+          ? "https://paqresearch.github.io/kapacity-skol-pro-uprchliky"
           : "",
     },
   };

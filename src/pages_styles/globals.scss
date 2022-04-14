@@ -5,6 +5,10 @@ body {
   font-family: Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
+body {
+  padding: 20px;
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -12,6 +16,10 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+button {
+  font-family: Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
 /* fira-sans-regular - latin-ext_latin */
