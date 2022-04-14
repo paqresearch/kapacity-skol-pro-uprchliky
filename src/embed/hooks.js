@@ -41,5 +41,6 @@ export const usePostMessageWithHeight = (id) => {
 
   return {
     containerRef,
+    postHeightMessage,
   };
 };

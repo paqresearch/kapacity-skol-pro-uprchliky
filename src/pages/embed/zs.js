@@ -18,12 +18,16 @@ export default function ZsEmbedPage({ baseUrl }) {
   const krajeData = useKrajeData(baseUrl);
   const prahaObvodyData = usePrahaObvodyData(baseUrl);
   const capacitiesData = useCapacitiesData(baseUrl);
-  const { containerRef } = usePostMessageWithHeight(
+  const { containerRef, postHeightMessage } = usePostMessageWithHeight(
     "paqresearch_kapacity-skol-pro-uprchliky_zs"
   );
 
   const [activeTab, setActiveTab] = React.useState("zs_previs");
   const [selectedOrpId, setSelectedOrpId] = React.useState(null);
+
+  React.useEffect(() => {
+    postHeightMessage();
+  }, [activeTab]);
 
   if (!orpData || !krajeData || !capacitiesData) {
     return null;
