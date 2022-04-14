@@ -311,8 +311,6 @@ const showTooltip = ({
     `;
   containerDomEl.append(tooltipEl);
 
-  console.log({ orpId });
-
   ReactDOM.render(
     renderTooltipContent(orpId, feature),
     tooltipEl.querySelector(".tooltip-content")

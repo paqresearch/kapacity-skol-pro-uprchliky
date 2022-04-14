@@ -31,6 +31,10 @@ export default function MsEmbedPage({ baseUrl }) {
   const [selectedOrpId, setSelectedOrpId] = React.useState(null);
 
   React.useEffect(() => {
+    setActiveTab(router.query.tab ? router.query.tab : "ms_previs");
+  }, [router.query.tab]);
+
+  React.useEffect(() => {
     postHeightMessage();
   }, [activeTab]);
 
@@ -146,7 +150,6 @@ const MsPrevisMap = ({
     () => keyBy(capacitiesData, "id"),
     [capacitiesData]
   );
-  console.log({ orpCapacityById });
 
   return (
     <div className={styles.mapContainer}>

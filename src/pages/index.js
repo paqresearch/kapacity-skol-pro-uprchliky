@@ -20,6 +20,59 @@ export default function IndexPage({ baseUrl }) {
         <code>{createEmbedCode(zsMapConfig, baseUrl).trim()}</code>
       </pre>
 
+      <h2>Ke stažení</h2>
+
+      <ul>
+        <li>
+          <a
+            href={`${baseUrl}/Převis_podstav kapacit ZŠ pro ukrajinské uprchlíky v září 2022.png`}
+            download
+            className={styles.downloadLink}
+          >
+            Převis/podstav kapacit ZŠ pro ukrajinské uprchlíky v září 2022.png
+          </a>
+        </li>
+        <li>
+          <a
+            href={`${baseUrl}/Převis_podstav kapacit na 1. stupni ZŠ pro ukrajinské uprchlíky v září 2022.png`}
+            download
+            className={styles.downloadLink}
+          >
+            Převis/podstav kapacit na 1. stupni ZŠ pro ukrajinské uprchlíky v
+            září 2022.png
+          </a>
+        </li>
+        <li>
+          <a
+            href={`${baseUrl}/Převis_podstav kapacit na 2. stupni ZŠ pro ukrajinské uprchlíky v září 2022.png`}
+            download
+            className={styles.downloadLink}
+          >
+            Převis/podstav kapacit na 2. stupni ZŠ pro ukrajinské uprchlíky v
+            září 2022.png
+          </a>
+        </li>
+        <li>
+          <a
+            href={`${baseUrl}/Podíl již zapsaných na ZŠ z nahlášených 7–15letých ukrajinských uprchlíků.png`}
+            download
+            className={styles.downloadLink}
+          >
+            Podíl již zapsaných na ZŠ z nahlášených 7–15letých ukrajinských
+            uprchlíků.png
+          </a>
+        </li>
+        <li>
+          <a
+            href={`${baseUrl}/Ukrajinští žáci aktuálně zapsaní na ZŠ.png`}
+            download
+            className={styles.downloadLink}
+          >
+            Ukrajinští žáci aktuálně zapsaní na ZŠ.png
+          </a>
+        </li>
+      </ul>
+
       <h1>Kapacity MŠ pro ukrajinské uprchlíky</h1>
 
       <div
@@ -34,6 +87,39 @@ export default function IndexPage({ baseUrl }) {
       <pre className={styles.pre}>
         <code>{createEmbedCode(msMapConfig, baseUrl).trim()}</code>
       </pre>
+
+      <h2>Ke stažení</h2>
+
+      <ul>
+        <li>
+          <a
+            href={`${baseUrl}/Převis_podstav kapacit MŠ pro ukrajinské uprchlíky v září 2022.png`}
+            download
+            className={styles.downloadLink}
+          >
+            Převis/podstav kapacit MŠ pro ukrajinské uprchlíky v září 2022.png
+          </a>
+        </li>
+        <li>
+          <a
+            href={`${baseUrl}/Podíl již zapsaných na MŠ z nahlášených 3–5letých ukrajinských uprchlíků.png`}
+            download
+            className={styles.downloadLink}
+          >
+            Podíl již zapsaných na MŠ z nahlášených 3–5letých ukrajinských
+            uprchlíků.png
+          </a>
+        </li>
+        <li>
+          <a
+            href={`${baseUrl}/Ukrajinské děti aktuálně zapsané na MŠ.png`}
+            download
+            className={styles.downloadLink}
+          >
+            Ukrajinské děti aktuálně zapsané na MŠ.png
+          </a>
+        </li>
+      </ul>
     </main>
   );
 }

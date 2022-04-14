@@ -23,3 +23,13 @@
   white-space: break-spaces;
   word-break: break-word;
 }
+
+.downloadLink {
+  display: block;
+  margin: 10px 0 0 0;
+  color: #288893;
+  
+  &:hover, &:focus {
+    text-decoration: underline;
+  }
+}

@@ -31,6 +31,10 @@ export default function ZsEmbedPage({ baseUrl }) {
   const [selectedOrpId, setSelectedOrpId] = React.useState(null);
 
   React.useEffect(() => {
+    setActiveTab(router.query.tab ? router.query.tab : "zs_previs");
+  }, [router.query.tab]);
+
+  React.useEffect(() => {
     postHeightMessage();
   }, [activeTab]);
 
