@@ -211,8 +211,8 @@ const ZsPrevisMap = ({
               <div className="main-value-line">
                 <strong>
                   {orpCapacityById[orpId].zs_previs > 0 ? "převis" : "podstav"}{" "}
-                  {Math.abs(Math.round(orpCapacityById[orpId].zs_previs))} míst
-                  {parseInt(orpId, 10) === 9943 && <> *</>}
+                  {Math.abs(Math.round(orpCapacityById[orpId].zs_previs))}
+                  {parseInt(orpId, 10) === 9943 && <>*</>} míst
                 </strong>
               </div>
               <div className="value-line">
@@ -222,16 +222,16 @@ const ZsPrevisMap = ({
               <div className="value-line">
                 {orpCapacityById[orpId].zs_kapacity_duben.toLocaleString(
                   "cs-CZ"
-                )}{" "}
-                volných míst k 7.&thinsp;4.&thinsp;2022
-                {parseInt(orpId, 10) === 9943 && <> *</>}
+                )}
+                {parseInt(orpId, 10) === 9943 && <>*</>} volných míst k
+                7.&thinsp;4.&thinsp;2022
               </div>
               <div className="value-line">
                 {orpCapacityById[orpId].zs_kapacity_zari.toLocaleString(
                   "cs-CZ"
-                )}{" "}
-                možných nových míst k září 2022
-                {parseInt(orpId, 10) === 9943 && <> *</>}
+                )}
+                {parseInt(orpId, 10) === 9943 && <>*</>} možných nových míst k
+                září 2022
               </div>
               <div className="value-line">
                 {orpCapacityById[orpId].zs_uprchliku.toLocaleString("cs-CZ")}{" "}
@@ -240,8 +240,10 @@ const ZsPrevisMap = ({
 
               {parseInt(orpId, 10) === 9943 && (
                 <div className="note">
-                  * Z důvodu chyby ve zdrojových datech jsou čísla pro Prahu 4
-                  aktuálně pouze kvalifikované odhady.
+                  * Z důvodu chyby ve zdrojových datech byla kapacita k září u
+                  Prahy 4 upravena na kvalifikovaný odhad. Kapacita k dubnu
+                  nebyla upravena, jeví se ale být výrazně vyšší než v jiných
+                  obvodech.
                 </div>
               )}
             </div>
@@ -361,8 +363,8 @@ const ZsPrevis1StupenMap = ({
                     : "podstav"}{" "}
                   {Math.abs(
                     Math.round(orpCapacityById[orpId].zs_previs_1_stupen)
-                  )}{" "}
-                  míst na 1. stupni{parseInt(orpId, 10) === 9943 && <> *</>}
+                  )}
+                  {parseInt(orpId, 10) === 9943 && <>*</>} míst na 1. stupni
                 </strong>
               </div>
               <div className="value-line">
@@ -372,16 +374,16 @@ const ZsPrevis1StupenMap = ({
               <div className="value-line">
                 {orpCapacityById[orpId].zs_kapacity_duben.toLocaleString(
                   "cs-CZ"
-                )}{" "}
-                volných míst k 7.&thinsp;4.&thinsp;2022
-                {parseInt(orpId, 10) === 9943 && <> *</>}
+                )}
+                {parseInt(orpId, 10) === 9943 && <>*</>} volných míst k
+                7.&thinsp;4.&thinsp;2022
               </div>
               <div className="value-line">
                 {orpCapacityById[orpId].zs_kapacity_zari.toLocaleString(
                   "cs-CZ"
-                )}{" "}
-                možných nových míst k září 2022
-                {parseInt(orpId, 10) === 9943 && <> *</>}
+                )}
+                {parseInt(orpId, 10) === 9943 && <>*</>} možných nových míst k
+                září 2022
               </div>
               <div className="value-line">
                 {orpCapacityById[orpId].zs_uprchliku.toLocaleString("cs-CZ")}{" "}
@@ -390,8 +392,10 @@ const ZsPrevis1StupenMap = ({
 
               {parseInt(orpId, 10) === 9943 && (
                 <div className="note">
-                  * Z důvodu chyby ve zdrojových datech jsou čísla pro Prahu 4
-                  aktuálně pouze kvalifikované odhady.
+                  * Z důvodu chyby ve zdrojových datech byla kapacita k září u
+                  Prahy 4 upravena na kvalifikovaný odhad. Kapacita k dubnu
+                  nebyla upravena, jeví se ale být výrazně vyšší než v jiných
+                  obvodech.
                 </div>
               )}
             </div>
@@ -511,8 +515,8 @@ const ZsPrevis2StupenMap = ({
                     : "podstav"}{" "}
                   {Math.abs(
                     Math.round(orpCapacityById[orpId].zs_previs_2_stupen)
-                  )}{" "}
-                  míst na 2. stupni{parseInt(orpId, 10) === 9943 && <> *</>}
+                  )}
+                  {parseInt(orpId, 10) === 9943 && <>*</>} míst na 2. stupni
                 </strong>
               </div>
               <div className="value-line">
@@ -522,16 +526,16 @@ const ZsPrevis2StupenMap = ({
               <div className="value-line">
                 {orpCapacityById[orpId].zs_kapacity_duben.toLocaleString(
                   "cs-CZ"
-                )}{" "}
-                volných míst k 7.&thinsp;4.&thinsp;2022
-                {parseInt(orpId, 10) === 9943 && <> *</>}
+                )}
+                {parseInt(orpId, 10) === 9943 && <>*</>} volných míst k
+                7.&thinsp;4.&thinsp;2022
               </div>
               <div className="value-line">
                 {orpCapacityById[orpId].zs_kapacity_zari.toLocaleString(
                   "cs-CZ"
-                )}{" "}
-                možných nových míst k září 2022
-                {parseInt(orpId, 10) === 9943 && <> *</>}
+                )}
+                {parseInt(orpId, 10) === 9943 && <>*</>} možných nových míst k
+                září 2022
               </div>
               <div className="value-line">
                 {orpCapacityById[orpId].zs_uprchliku.toLocaleString("cs-CZ")}{" "}
@@ -540,8 +544,10 @@ const ZsPrevis2StupenMap = ({
 
               {parseInt(orpId, 10) === 9943 && (
                 <div className="note">
-                  * Z důvodu chyby ve zdrojových datech jsou čísla pro Prahu 4
-                  aktuálně pouze kvalifikované odhady.
+                  * Z důvodu chyby ve zdrojových datech byla kapacita k září u
+                  Prahy 4 upravena na kvalifikovaný odhad. Kapacita k dubnu
+                  nebyla upravena, jeví se ale být výrazně vyšší než v jiných
+                  obvodech.
                 </div>
               )}
             </div>
