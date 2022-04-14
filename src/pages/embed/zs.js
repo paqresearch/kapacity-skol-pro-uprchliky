@@ -293,8 +293,8 @@ const ZsPrevis1StupenMap = ({
         Počítáme s&nbsp;75&nbsp;%&nbsp;efektivitou využití aktuálně volných
         a&nbsp;možných nových míst, místa ve&nbsp;speciálních třídách
         s&nbsp;efektivitou využití 10&nbsp;%. Zápisy uvažujeme všech 7–15letých
-        podle nahlášených pobytů MV&nbsp;ČR k&nbsp;12.4.2022 s&nbsp;výjimkou
-        1168 osob bez určeného pobytu.
+        podle nahlášených pobytů MV&nbsp;ČR k&nbsp;12.&thinsp;4.&thinsp;2022
+        s&nbsp;výjimkou 1168 osob bez určeného pobytu.
       </p>
 
       <div className={styles.legend}>
@@ -434,8 +434,8 @@ const ZsPrevis2StupenMap = ({
         Počítáme s&nbsp;75&nbsp;%&nbsp;efektivitou využití aktuálně volných
         a&nbsp;možných nových míst, místa ve&nbsp;speciálních třídách
         s&nbsp;efektivitou využití 10&nbsp;%. Zápisy uvažujeme všech 7–15letých
-        podle nahlášených pobytů MV&nbsp;ČR k&nbsp;12.4.2022 s&nbsp;výjimkou
-        1168 osob bez určeného pobytu.
+        podle nahlášených pobytů MV&nbsp;ČR k&nbsp;12.&thinsp;4.&thinsp;2022
+        s&nbsp;výjimkou 1168 osob bez určeného pobytu.
       </p>
 
       <div className={styles.legend}>
@@ -572,8 +572,9 @@ const ZsZapsaniZNahlasenychMap = ({
       </h1>
 
       <p className={styles.byline}>
-        Uvažujeme 7–15leté podle nahlášených pobytů MV&nbsp;ČR k&nbsp;12.4.2022
-        s&nbsp;výjimkou 1168 osob bez určeného pobytu.
+        Uvažujeme 7–15leté podle nahlášených pobytů MV&nbsp;ČR
+        k&nbsp;12.&thinsp;4.&thinsp;2022 s&nbsp;výjimkou 1168 osob bez určeného
+        pobytu.
       </p>
 
       <div className={styles.legend}>
