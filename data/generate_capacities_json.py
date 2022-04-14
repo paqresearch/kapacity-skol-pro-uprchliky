@@ -41,7 +41,7 @@ if __name__ == "__main__":
         fieldnames = [
             'orp_kod', 'orp_nazev',
             'ms_zapsani', None, 'ms_kapacity_duben', 'ms_kapacity_zari',
-            'ms_uprchlici', 'ms_zapsani_z_nahlasenych', 'ms_previs',
+            'ms_uprchliku', 'ms_zapsani_z_nahlasenych', 'ms_previs',
             
             'zs_zapsani', 'zs_kapacity_duben_malotridky', 'zs_kapacity_duben_1', 'zs_kapacity_duben_2', 'zs_kapacity_duben_3', 'zs_kapacity_duben_4', 'zs_kapacity_duben_5', 'zs_kapacity_duben_6', 'zs_kapacity_duben_7', 'zs_kapacity_duben_8', 'zs_kapacity_duben_9', 'zs_kapacity_duben_sp1', 'zs_kapacity_duben_sp2', 'zs_kapacity_zari',
             'zs_uprchliku',

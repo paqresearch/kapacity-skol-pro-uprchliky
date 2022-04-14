@@ -1,5 +1,6 @@
 import React from "react";
 import Head from "next/head";
+import { useRouter } from "next/router";
 import * as d3 from "d3";
 import { keyBy } from "lodash";
 
@@ -14,6 +15,8 @@ import {
 import styles from "../../pages_styles/MapsInTabsEmbedPage.module.scss";
 
 export default function ZsEmbedPage({ baseUrl }) {
+  const router = useRouter();
+
   const orpData = useOrpData(baseUrl);
   const krajeData = useKrajeData(baseUrl);
   const prahaObvodyData = usePrahaObvodyData(baseUrl);
@@ -22,7 +25,9 @@ export default function ZsEmbedPage({ baseUrl }) {
     "paqresearch_kapacity-skol-pro-uprchliky_zs"
   );
 
-  const [activeTab, setActiveTab] = React.useState("zs_previs");
+  const [activeTab, setActiveTab] = React.useState(
+    router.query.tab ? router.query.tab : "zs_previs"
+  );
   const [selectedOrpId, setSelectedOrpId] = React.useState(null);
 
   React.useEffect(() => {
@@ -34,33 +39,38 @@ export default function ZsEmbedPage({ baseUrl }) {
   }
 
   const activeTabItem = tabs.find((tab) => tab.key === activeTab);
-  const renderMap =
-    activeTabItem && activeTabItem.map ? activeTabItem.map : () => null;
 
   return (
-    <div className={styles.container}>
+    <div
+      className={styles.container}
+      style={{
+        padding: router.query.padding ? router.query.padding : undefined,
+      }}
+    >
       <Head>
         <title>Kapacity ZŠ pro ukrajinské uprchlíky</title>
       </Head>
 
       <main className={styles.container} ref={containerRef}>
-        <nav className={styles.tabsContainer}>
-          <ul>
-            {tabs.map((tab) => (
-              <li
-                key={tab.key}
-                className={tab.key === activeTab ? "active" : undefined}
-              >
-                <button type="button" onClick={() => setActiveTab(tab.key)}>
-                  {tab.thumbnail && (
-                    <img src={`${baseUrl}/${tab.thumbnail}`} alt="" />
-                  )}
-                  {tab.title}
-                </button>
-              </li>
-            ))}
-          </ul>
-        </nav>
+        {router.query.tab === undefined && (
+          <nav className={styles.tabsContainer}>
+            <ul>
+              {tabs.map((tab) => (
+                <li
+                  key={tab.key}
+                  className={tab.key === activeTab ? "active" : undefined}
+                >
+                  <button type="button" onClick={() => setActiveTab(tab.key)}>
+                    {tab.thumbnail && (
+                      <img src={`${baseUrl}/${tab.thumbnail}`} alt="" />
+                    )}
+                    {tab.title}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        )}
 
         {activeTabItem && activeTabItem.map
           ? activeTabItem.map({
@@ -158,7 +168,7 @@ const ZsPrevisMap = ({
         a&nbsp;možných nových míst, místa ve&nbsp;speciálních třídách
         s&nbsp;efektivitou využití 10&nbsp;%. Zápisy uvažujeme všech 7–15letých
         podle nahlášených pobytů MV&nbsp;ČR k&nbsp;12.&thinsp;4.&thinsp;2022
-        s&nbsp;výjimkou 1168 osob bez určeného pobytu.
+        s&nbsp;výjimkou 1168 dětí bez určeného pobytu.
       </p>
 
       <div className={styles.legend}>
@@ -294,7 +304,7 @@ const ZsPrevis1StupenMap = ({
         a&nbsp;možných nových míst, místa ve&nbsp;speciálních třídách
         s&nbsp;efektivitou využití 10&nbsp;%. Zápisy uvažujeme všech 7–15letých
         podle nahlášených pobytů MV&nbsp;ČR k&nbsp;12.&thinsp;4.&thinsp;2022
-        s&nbsp;výjimkou 1168 osob bez určeného pobytu.
+        s&nbsp;výjimkou 1168 dětí bez určeného pobytu.
       </p>
 
       <div className={styles.legend}>
@@ -435,7 +445,7 @@ const ZsPrevis2StupenMap = ({
         a&nbsp;možných nových míst, místa ve&nbsp;speciálních třídách
         s&nbsp;efektivitou využití 10&nbsp;%. Zápisy uvažujeme všech 7–15letých
         podle nahlášených pobytů MV&nbsp;ČR k&nbsp;12.&thinsp;4.&thinsp;2022
-        s&nbsp;výjimkou 1168 osob bez určeného pobytu.
+        s&nbsp;výjimkou 1168 dětí bez určeného pobytu.
       </p>
 
       <div className={styles.legend}>
@@ -573,7 +583,7 @@ const ZsZapsaniZNahlasenychMap = ({
 
       <p className={styles.byline}>
         Uvažujeme 7–15leté podle nahlášených pobytů MV&nbsp;ČR
-        k&nbsp;12.&thinsp;4.&thinsp;2022 s&nbsp;výjimkou 1168 osob bez určeného
+        k&nbsp;12.&thinsp;4.&thinsp;2022 s&nbsp;výjimkou 1168 dětí bez určeného
         pobytu.
       </p>
 

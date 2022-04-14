@@ -22,7 +22,18 @@ export default function IndexPage({ baseUrl }) {
 
       <h1>Kapacity MŠ pro ukrajinské uprchlíky</h1>
 
-      <div>TODO</div>
+      <div
+        dangerouslySetInnerHTML={{
+          __html: createEmbedCode(msMapConfig, baseUrl),
+        }}
+        style={{ border: "5px solid #aaa", padding: "20px" }}
+      ></div>
+
+      <h2>Kód k vložení do vlastních stránek</h2>
+
+      <pre className={styles.pre}>
+        <code>{createEmbedCode(msMapConfig, baseUrl).trim()}</code>
+      </pre>
     </main>
   );
 }
@@ -30,6 +41,11 @@ export default function IndexPage({ baseUrl }) {
 const zsMapConfig = {
   embedSrc: "/embed/zs",
   embedId: "paqresearch_kapacity-skol-pro-uprchliky_zs",
+};
+
+const msMapConfig = {
+  embedSrc: "/embed/ms",
+  embedId: "paqresearch_kapacity-skol-pro-uprchliky_ms",
 };
 
 const createEmbedCode = (mapConfig, baseUrl) => {

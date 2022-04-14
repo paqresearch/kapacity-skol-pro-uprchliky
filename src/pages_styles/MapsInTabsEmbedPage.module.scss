@@ -3,6 +3,7 @@
 }
 
 .tabsContainer {
+  margin: 0 0 20px 0;
   overflow-x: auto;
   
   > ul {
@@ -75,8 +76,6 @@
 }
 
 .mapContainer {
-  margin: 20px 0 0 0;
-
   h1 {
     margin: 0;
     font-size: 20px;
