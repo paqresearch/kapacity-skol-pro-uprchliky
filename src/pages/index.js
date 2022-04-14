@@ -46,7 +46,7 @@ export async function getStaticProps() {
     props: {
       baseUrl:
         process.env.NODE_ENV === "production"
-          ? "https://vlki.github.io/paq-ukrajina-mapy"
+          ? "https://paqresearch.github.io/kapacity-skol-pro-uprchliky"
           : "",
     },
   };
