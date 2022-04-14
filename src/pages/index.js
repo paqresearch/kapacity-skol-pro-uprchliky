@@ -25,50 +25,50 @@ export default function IndexPage({ baseUrl }) {
       <ul>
         <li>
           <a
-            href={`${baseUrl}/Převis_podstav kapacit ZŠ pro ukrajinské uprchlíky v září 2022.png`}
+            href={`${baseUrl}/Previs_podstav kapacit ZS pro ukrajinske uprchliky v zari 2022.png`}
             download
             className={styles.downloadLink}
           >
-            Převis/podstav kapacit ZŠ pro ukrajinské uprchlíky v září 2022.png
+            Previs_podstav kapacit ZS pro ukrajinske uprchliky v zari 2022.png
           </a>
         </li>
         <li>
           <a
-            href={`${baseUrl}/Převis_podstav kapacit na 1. stupni ZŠ pro ukrajinské uprchlíky v září 2022.png`}
+            href={`${baseUrl}/Previs_podstav kapacit na 1. stupni ZS pro ukrajinske uprchliky v zari 2022.png`}
             download
             className={styles.downloadLink}
           >
-            Převis/podstav kapacit na 1. stupni ZŠ pro ukrajinské uprchlíky v
-            září 2022.png
+            Previs_podstav kapacit na 1. stupni ZS pro ukrajinske uprchliky v
+            zari 2022.png
           </a>
         </li>
         <li>
           <a
-            href={`${baseUrl}/Převis_podstav kapacit na 2. stupni ZŠ pro ukrajinské uprchlíky v září 2022.png`}
+            href={`${baseUrl}/Previs_podstav kapacit na 2. stupni ZS pro ukrajinske uprchliky v zari 2022.png`}
             download
             className={styles.downloadLink}
           >
-            Převis/podstav kapacit na 2. stupni ZŠ pro ukrajinské uprchlíky v
-            září 2022.png
+            Previs_podstav kapacit na 2. stupni ZS pro ukrajinske uprchliky v
+            zari 2022.png
           </a>
         </li>
         <li>
           <a
-            href={`${baseUrl}/Podíl již zapsaných na ZŠ z nahlášených 7–15letých ukrajinských uprchlíků.png`}
+            href={`${baseUrl}/Podil jiz zapsanych na ZS z nahlasenych 7-15letych ukrajinskych uprchliku.png`}
             download
             className={styles.downloadLink}
           >
-            Podíl již zapsaných na ZŠ z nahlášených 7–15letých ukrajinských
-            uprchlíků.png
+            Podil jiz zapsanych na ZS z nahlasenych 7-15letych ukrajinskych
+            uprchliku.png
           </a>
         </li>
         <li>
           <a
-            href={`${baseUrl}/Ukrajinští žáci aktuálně zapsaní na ZŠ.png`}
+            href={`${baseUrl}/Ukrajinsti zaci aktualne zapsani na ZS.png`}
             download
             className={styles.downloadLink}
           >
-            Ukrajinští žáci aktuálně zapsaní na ZŠ.png
+            Ukrajinsti zaci aktualne zapsani na ZS.png
           </a>
         </li>
       </ul>
@@ -93,30 +93,30 @@ export default function IndexPage({ baseUrl }) {
       <ul>
         <li>
           <a
-            href={`${baseUrl}/Převis_podstav kapacit MŠ pro ukrajinské uprchlíky v září 2022.png`}
+            href={`${baseUrl}/Previs_podstav kapacit MS pro ukrajinske uprchliky v zari 2022.png`}
             download
             className={styles.downloadLink}
           >
-            Převis/podstav kapacit MŠ pro ukrajinské uprchlíky v září 2022.png
+            Previs_podstav kapacit MS pro ukrajinske uprchliky v zari 2022.png
           </a>
         </li>
         <li>
           <a
-            href={`${baseUrl}/Podíl již zapsaných na MŠ z nahlášených 3–5letých ukrajinských uprchlíků.png`}
+            href={`${baseUrl}/Podil jiz zapsanych na MS z nahlasenych 3-5letych ukrajinskych uprchliku.png`}
             download
             className={styles.downloadLink}
           >
-            Podíl již zapsaných na MŠ z nahlášených 3–5letých ukrajinských
-            uprchlíků.png
+            Podil jiz zapsanych na MS z nahlasenych 3-5letych ukrajinskych
+            uprchliku.png
           </a>
         </li>
         <li>
           <a
-            href={`${baseUrl}/Ukrajinské děti aktuálně zapsané na MŠ.png`}
+            href={`${baseUrl}/Ukrajinske deti aktualne zapsane na MS.png`}
             download
             className={styles.downloadLink}
           >
-            Ukrajinské děti aktuálně zapsané na MŠ.png
+            Ukrajinske deti aktualne zapsane na MS.png
           </a>
         </li>
       </ul>
