@@ -212,6 +212,7 @@ const ZsPrevisMap = ({
                 <strong>
                   {orpCapacityById[orpId].zs_previs > 0 ? "převis" : "podstav"}{" "}
                   {Math.abs(Math.round(orpCapacityById[orpId].zs_previs))} míst
+                  {parseInt(orpId, 10) === 9943 && <> *</>}
                 </strong>
               </div>
               <div className="value-line">
@@ -223,17 +224,26 @@ const ZsPrevisMap = ({
                   "cs-CZ"
                 )}{" "}
                 volných míst k 7.&thinsp;4.&thinsp;2022
+                {parseInt(orpId, 10) === 9943 && <> *</>}
               </div>
               <div className="value-line">
                 {orpCapacityById[orpId].zs_kapacity_zari.toLocaleString(
                   "cs-CZ"
                 )}{" "}
                 možných nových míst k září 2022
+                {parseInt(orpId, 10) === 9943 && <> *</>}
               </div>
               <div className="value-line">
                 {orpCapacityById[orpId].zs_uprchliku.toLocaleString("cs-CZ")}{" "}
                 nahlášených 7–15letých uprchlíků k 12.&thinsp;4.&thinsp;2022
               </div>
+
+              {parseInt(orpId, 10) === 9943 && (
+                <div className="note">
+                  * Z důvodu chyby ve zdrojových datech jsou čísla pro Prahu 4
+                  aktuálně pouze kvalifikované odhady.
+                </div>
+              )}
             </div>
           )}
         />
@@ -352,7 +362,7 @@ const ZsPrevis1StupenMap = ({
                   {Math.abs(
                     Math.round(orpCapacityById[orpId].zs_previs_1_stupen)
                   )}{" "}
-                  míst na 1. stupni
+                  míst na 1. stupni{parseInt(orpId, 10) === 9943 && <> *</>}
                 </strong>
               </div>
               <div className="value-line">
@@ -364,17 +374,26 @@ const ZsPrevis1StupenMap = ({
                   "cs-CZ"
                 )}{" "}
                 volných míst k 7.&thinsp;4.&thinsp;2022
+                {parseInt(orpId, 10) === 9943 && <> *</>}
               </div>
               <div className="value-line">
                 {orpCapacityById[orpId].zs_kapacity_zari.toLocaleString(
                   "cs-CZ"
                 )}{" "}
                 možných nových míst k září 2022
+                {parseInt(orpId, 10) === 9943 && <> *</>}
               </div>
               <div className="value-line">
                 {orpCapacityById[orpId].zs_uprchliku.toLocaleString("cs-CZ")}{" "}
                 nahlášených 7–15letých uprchlíků k 12.&thinsp;4.&thinsp;2022
               </div>
+
+              {parseInt(orpId, 10) === 9943 && (
+                <div className="note">
+                  * Z důvodu chyby ve zdrojových datech jsou čísla pro Prahu 4
+                  aktuálně pouze kvalifikované odhady.
+                </div>
+              )}
             </div>
           )}
         />
@@ -493,7 +512,7 @@ const ZsPrevis2StupenMap = ({
                   {Math.abs(
                     Math.round(orpCapacityById[orpId].zs_previs_2_stupen)
                   )}{" "}
-                  míst na 2. stupni
+                  míst na 2. stupni{parseInt(orpId, 10) === 9943 && <> *</>}
                 </strong>
               </div>
               <div className="value-line">
@@ -505,17 +524,26 @@ const ZsPrevis2StupenMap = ({
                   "cs-CZ"
                 )}{" "}
                 volných míst k 7.&thinsp;4.&thinsp;2022
+                {parseInt(orpId, 10) === 9943 && <> *</>}
               </div>
               <div className="value-line">
                 {orpCapacityById[orpId].zs_kapacity_zari.toLocaleString(
                   "cs-CZ"
                 )}{" "}
                 možných nových míst k září 2022
+                {parseInt(orpId, 10) === 9943 && <> *</>}
               </div>
               <div className="value-line">
                 {orpCapacityById[orpId].zs_uprchliku.toLocaleString("cs-CZ")}{" "}
                 nahlášených 7–15letých uprchlíků k 12.&thinsp;4.&thinsp;2022
               </div>
+
+              {parseInt(orpId, 10) === 9943 && (
+                <div className="note">
+                  * Z důvodu chyby ve zdrojových datech jsou čísla pro Prahu 4
+                  aktuálně pouze kvalifikované odhady.
+                </div>
+              )}
             </div>
           )}
         />
