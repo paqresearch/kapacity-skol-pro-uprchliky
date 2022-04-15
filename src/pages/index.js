@@ -54,11 +54,11 @@ export default function IndexPage({ baseUrl }) {
         </li>
         <li>
           <a
-            href={`${baseUrl}/Podil jiz zapsanych na ZS z nahlasenych 7-15letych ukrajinskych uprchliku.png`}
+            href={`${baseUrl}/Podil jiz zapsanych na ZS z nahlasenych 6-14letych ukrajinskych uprchliku.png`}
             download
             className={styles.downloadLink}
           >
-            Podil jiz zapsanych na ZS z nahlasenych 7-15letych ukrajinskych
+            Podil jiz zapsanych na ZS z nahlasenych 6-14letych ukrajinskych
             uprchliku.png
           </a>
         </li>

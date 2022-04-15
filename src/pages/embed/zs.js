@@ -45,47 +45,48 @@ export default function ZsEmbedPage({ baseUrl }) {
   const activeTabItem = tabs.find((tab) => tab.key === activeTab);
 
   return (
-    <div
-      className={styles.container}
-      style={{
-        padding: router.query.padding ? router.query.padding : undefined,
-      }}
-    >
+    <div className={styles.container}>
       <Head>
         <title>Kapacity ZŠ pro ukrajinské uprchlíky</title>
       </Head>
 
       <main className={styles.container} ref={containerRef}>
-        {router.query.tab === undefined && (
-          <nav className={styles.tabsContainer}>
-            <ul>
-              {tabs.map((tab) => (
-                <li
-                  key={tab.key}
-                  className={tab.key === activeTab ? "active" : undefined}
-                >
-                  <button type="button" onClick={() => setActiveTab(tab.key)}>
-                    {tab.thumbnail && (
-                      <img src={`${baseUrl}/${tab.thumbnail}`} alt="" />
-                    )}
-                    {tab.title}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </nav>
-        )}
+        <div
+          style={{
+            padding: router.query.padding ? router.query.padding : undefined,
+          }}
+        >
+          {router.query.tab === undefined && (
+            <nav className={styles.tabsContainer}>
+              <ul>
+                {tabs.map((tab) => (
+                  <li
+                    key={tab.key}
+                    className={tab.key === activeTab ? "active" : undefined}
+                  >
+                    <button type="button" onClick={() => setActiveTab(tab.key)}>
+                      {tab.thumbnail && (
+                        <img src={`${baseUrl}/${tab.thumbnail}`} alt="" />
+                      )}
+                      {tab.title}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          )}
 
-        {activeTabItem && activeTabItem.map
-          ? activeTabItem.map({
-              orpData,
-              krajeData,
-              prahaObvodyData,
-              capacitiesData,
-              selectedOrpId,
-              setSelectedOrpId,
-            })
-          : null}
+          {activeTabItem && activeTabItem.map
+            ? activeTabItem.map({
+                orpData,
+                krajeData,
+                prahaObvodyData,
+                capacitiesData,
+                selectedOrpId,
+                setSelectedOrpId,
+              })
+            : null}
+        </div>
       </main>
     </div>
   );
@@ -170,7 +171,7 @@ const ZsPrevisMap = ({
       <p className={styles.byline}>
         Počítáme s&nbsp;75&nbsp;%&nbsp;efektivitou využití aktuálně volných
         a&nbsp;možných nových míst, místa ve&nbsp;speciálních třídách
-        s&nbsp;efektivitou využití 10&nbsp;%. Zápisy uvažujeme všech 7–15letých
+        s&nbsp;efektivitou využití 10&nbsp;%. Zápisy uvažujeme všech 6–14letých
         podle nahlášených pobytů MV&nbsp;ČR k&nbsp;12.&thinsp;4.&thinsp;2022
         s&nbsp;výjimkou 1168 dětí bez určeného pobytu.
       </p>
@@ -235,7 +236,7 @@ const ZsPrevisMap = ({
               </div>
               <div className="value-line">
                 {orpCapacityById[orpId].zs_uprchliku.toLocaleString("cs-CZ")}{" "}
-                nahlášených 7–15letých uprchlíků k 12.&thinsp;4.&thinsp;2022
+                nahlášených 6–14letých uprchlíků k 12.&thinsp;4.&thinsp;2022
               </div>
 
               {parseInt(orpId, 10) === 9943 && (
@@ -318,7 +319,7 @@ const ZsPrevis1StupenMap = ({
       <p className={styles.byline}>
         Počítáme s&nbsp;75&nbsp;%&nbsp;efektivitou využití aktuálně volných
         a&nbsp;možných nových míst, místa ve&nbsp;speciálních třídách
-        s&nbsp;efektivitou využití 10&nbsp;%. Zápisy uvažujeme všech 7–15letých
+        s&nbsp;efektivitou využití 10&nbsp;%. Zápisy uvažujeme všech 6–14letých
         podle nahlášených pobytů MV&nbsp;ČR k&nbsp;12.&thinsp;4.&thinsp;2022
         s&nbsp;výjimkou 1168 dětí bez určeného pobytu.
       </p>
@@ -387,7 +388,7 @@ const ZsPrevis1StupenMap = ({
               </div>
               <div className="value-line">
                 {orpCapacityById[orpId].zs_uprchliku.toLocaleString("cs-CZ")}{" "}
-                nahlášených 7–15letých uprchlíků k 12.&thinsp;4.&thinsp;2022
+                nahlášených 6–14letých uprchlíků k 12.&thinsp;4.&thinsp;2022
               </div>
 
               {parseInt(orpId, 10) === 9943 && (
@@ -470,7 +471,7 @@ const ZsPrevis2StupenMap = ({
       <p className={styles.byline}>
         Počítáme s&nbsp;75&nbsp;%&nbsp;efektivitou využití aktuálně volných
         a&nbsp;možných nových míst, místa ve&nbsp;speciálních třídách
-        s&nbsp;efektivitou využití 10&nbsp;%. Zápisy uvažujeme všech 7–15letých
+        s&nbsp;efektivitou využití 10&nbsp;%. Zápisy uvažujeme všech 6–14letých
         podle nahlášených pobytů MV&nbsp;ČR k&nbsp;12.&thinsp;4.&thinsp;2022
         s&nbsp;výjimkou 1168 dětí bez určeného pobytu.
       </p>
@@ -539,7 +540,7 @@ const ZsPrevis2StupenMap = ({
               </div>
               <div className="value-line">
                 {orpCapacityById[orpId].zs_uprchliku.toLocaleString("cs-CZ")}{" "}
-                nahlášených 7–15letých uprchlíků k 12.&thinsp;4.&thinsp;2022
+                nahlášených 6–14letých uprchlíků k 12.&thinsp;4.&thinsp;2022
               </div>
 
               {parseInt(orpId, 10) === 9943 && (
@@ -615,12 +616,12 @@ const ZsZapsaniZNahlasenychMap = ({
   return (
     <div className={styles.mapContainer}>
       <h1>
-        Podíl již zapsaných na ZŠ z nahlášených 7–15letých ukrajinských
+        Podíl již zapsaných na ZŠ z nahlášených 6–14letých ukrajinských
         uprchlíků
       </h1>
 
       <p className={styles.byline}>
-        Uvažujeme 7–15leté podle nahlášených pobytů MV&nbsp;ČR
+        Uvažujeme 6–14leté podle nahlášených pobytů MV&nbsp;ČR
         k&nbsp;12.&thinsp;4.&thinsp;2022 s&nbsp;výjimkou 1168 dětí bez určeného
         pobytu.
       </p>
@@ -670,7 +671,7 @@ const ZsZapsaniZNahlasenychMap = ({
               </div>
               <div className="value-line">
                 {orpCapacityById[orpId].zs_uprchliku.toLocaleString("cs-CZ")}{" "}
-                nahlášených 7–15letých uprchlíků k 12.&thinsp;4.&thinsp;2022
+                nahlášených 6–14letých uprchlíků k 12.&thinsp;4.&thinsp;2022
               </div>
             </div>
           )}

@@ -45,47 +45,48 @@ export default function MsEmbedPage({ baseUrl }) {
   const activeTabItem = tabs.find((tab) => tab.key === activeTab);
 
   return (
-    <div
-      className={styles.container}
-      style={{
-        padding: router.query.padding ? router.query.padding : undefined,
-      }}
-    >
+    <div className={styles.container}>
       <Head>
         <title>Kapacity MŠ pro ukrajinské uprchlíky</title>
       </Head>
 
       <main className={styles.container} ref={containerRef}>
-        {router.query.tab === undefined && (
-          <nav className={styles.tabsContainer}>
-            <ul>
-              {tabs.map((tab) => (
-                <li
-                  key={tab.key}
-                  className={tab.key === activeTab ? "active" : undefined}
-                >
-                  <button type="button" onClick={() => setActiveTab(tab.key)}>
-                    {tab.thumbnail && (
-                      <img src={`${baseUrl}/${tab.thumbnail}`} alt="" />
-                    )}
-                    {tab.title}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </nav>
-        )}
+        <div
+          style={{
+            padding: router.query.padding ? router.query.padding : undefined,
+          }}
+        >
+          {router.query.tab === undefined && (
+            <nav className={styles.tabsContainer}>
+              <ul>
+                {tabs.map((tab) => (
+                  <li
+                    key={tab.key}
+                    className={tab.key === activeTab ? "active" : undefined}
+                  >
+                    <button type="button" onClick={() => setActiveTab(tab.key)}>
+                      {tab.thumbnail && (
+                        <img src={`${baseUrl}/${tab.thumbnail}`} alt="" />
+                      )}
+                      {tab.title}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          )}
 
-        {activeTabItem && activeTabItem.map
-          ? activeTabItem.map({
-              orpData,
-              krajeData,
-              prahaObvodyData,
-              capacitiesData,
-              selectedOrpId,
-              setSelectedOrpId,
-            })
-          : null}
+          {activeTabItem && activeTabItem.map
+            ? activeTabItem.map({
+                orpData,
+                krajeData,
+                prahaObvodyData,
+                capacitiesData,
+                selectedOrpId,
+                setSelectedOrpId,
+              })
+            : null}
+        </div>
       </main>
     </div>
   );
