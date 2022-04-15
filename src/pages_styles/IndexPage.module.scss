@@ -14,6 +14,12 @@
     font-size: 20px;
     line-height: 1.3;
   }
+
+  h3 {
+    margin: 15px 0 10px 0;
+    font-size: 16px;
+    line-height: 1.3;
+  }
 }
 
 .pre {
@@ -24,9 +30,17 @@
   word-break: break-word;
 }
 
-.downloadLink {
-  display: block;
-  margin: 10px 0 0 0;
+.downloads {
+  margin: 16px 0;
+  padding: 0 0 0 40px;
+
+  > li {
+    margin: 10px 0;
+    padding: 0;
+  }
+}
+
+.link {
   color: #288893;
   
   &:hover, &:focus {

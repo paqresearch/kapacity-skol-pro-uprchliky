@@ -5,29 +5,57 @@ import styles from "../pages_styles/IndexPage.module.scss";
 export default function IndexPage({ baseUrl }) {
   return (
     <main className={styles.container}>
-      <h1>Kapacity ZŠ pro ukrajinské uprchlíky</h1>
+      <h1>Kapacity ZŠ a MŠ pro ukrajinské uprchlíky</h1>
+
+      <p>
+        Interaktivní mapy k{" "}
+        <a
+          href="https://www.paqresearch.cz/post/vzdelavani-a-uprchlici-praha-bude-prehlcena-nejvice-zatizen-2-stupen-zs-a-materske-skoly"
+          target="_blank"
+          rel="noreferrer"
+          className={styles.link}
+        >
+          analýze PAQ Research
+        </a>
+        .
+      </p>
 
       <div
         dangerouslySetInnerHTML={{
           __html: createEmbedCode(zsMapConfig, baseUrl),
         }}
-        style={{ border: "5px solid #aaa", padding: "20px" }}
+        style={{ margin: "40px 0" }}
       ></div>
 
-      <h2>Kód k vložení do vlastních stránek</h2>
+      <div
+        dangerouslySetInnerHTML={{
+          __html: createEmbedCode(msMapConfig, baseUrl),
+        }}
+        style={{ margin: "40px 0" }}
+      ></div>
+
+      <h2>Kódy k vložení do vlastních stránek</h2>
+
+      <h3>Mapy kapacit ZŠ</h3>
 
       <pre className={styles.pre}>
         <code>{createEmbedCode(zsMapConfig, baseUrl).trim()}</code>
       </pre>
 
+      <h3>Mapy kapacit MŠ</h3>
+
+      <pre className={styles.pre}>
+        <code>{createEmbedCode(msMapConfig, baseUrl).trim()}</code>
+      </pre>
+
       <h2>Ke stažení</h2>
 
-      <ul>
+      <ul className={styles.downloads}>
         <li>
           <a
             href={`${baseUrl}/Previs_podstav kapacit ZS pro ukrajinske uprchliky v zari 2022.png`}
             download
-            className={styles.downloadLink}
+            className={styles.link}
           >
             Previs_podstav kapacit ZS pro ukrajinske uprchliky v zari 2022.png
           </a>
@@ -36,7 +64,7 @@ export default function IndexPage({ baseUrl }) {
           <a
             href={`${baseUrl}/Previs_podstav kapacit na 1. stupni ZS pro ukrajinske uprchliky v zari 2022.png`}
             download
-            className={styles.downloadLink}
+            className={styles.link}
           >
             Previs_podstav kapacit na 1. stupni ZS pro ukrajinske uprchliky v
             zari 2022.png
@@ -46,7 +74,7 @@ export default function IndexPage({ baseUrl }) {
           <a
             href={`${baseUrl}/Previs_podstav kapacit na 2. stupni ZS pro ukrajinske uprchliky v zari 2022.png`}
             download
-            className={styles.downloadLink}
+            className={styles.link}
           >
             Previs_podstav kapacit na 2. stupni ZS pro ukrajinske uprchliky v
             zari 2022.png
@@ -56,7 +84,7 @@ export default function IndexPage({ baseUrl }) {
           <a
             href={`${baseUrl}/Podil jiz zapsanych na ZS z nahlasenych 6-14letych ukrajinskych uprchliku.png`}
             download
-            className={styles.downloadLink}
+            className={styles.link}
           >
             Podil jiz zapsanych na ZS z nahlasenych 6-14letych ukrajinskych
             uprchliku.png
@@ -66,36 +94,16 @@ export default function IndexPage({ baseUrl }) {
           <a
             href={`${baseUrl}/Ukrajinsti zaci aktualne zapsani na ZS.png`}
             download
-            className={styles.downloadLink}
+            className={styles.link}
           >
             Ukrajinsti zaci aktualne zapsani na ZS.png
           </a>
         </li>
-      </ul>
-
-      <h1>Kapacity MŠ pro ukrajinské uprchlíky</h1>
-
-      <div
-        dangerouslySetInnerHTML={{
-          __html: createEmbedCode(msMapConfig, baseUrl),
-        }}
-        style={{ border: "5px solid #aaa", padding: "20px" }}
-      ></div>
-
-      <h2>Kód k vložení do vlastních stránek</h2>
-
-      <pre className={styles.pre}>
-        <code>{createEmbedCode(msMapConfig, baseUrl).trim()}</code>
-      </pre>
-
-      <h2>Ke stažení</h2>
-
-      <ul>
         <li>
           <a
             href={`${baseUrl}/Previs_podstav kapacit MS pro ukrajinske uprchliky v zari 2022.png`}
             download
-            className={styles.downloadLink}
+            className={styles.link}
           >
             Previs_podstav kapacit MS pro ukrajinske uprchliky v zari 2022.png
           </a>
@@ -104,7 +112,7 @@ export default function IndexPage({ baseUrl }) {
           <a
             href={`${baseUrl}/Podil jiz zapsanych na MS z nahlasenych 3-5letych ukrajinskych uprchliku.png`}
             download
-            className={styles.downloadLink}
+            className={styles.link}
           >
             Podil jiz zapsanych na MS z nahlasenych 3-5letych ukrajinskych
             uprchliku.png
@@ -114,7 +122,7 @@ export default function IndexPage({ baseUrl }) {
           <a
             href={`${baseUrl}/Ukrajinske deti aktualne zapsane na MS.png`}
             download
-            className={styles.downloadLink}
+            className={styles.link}
           >
             Ukrajinske deti aktualne zapsane na MS.png
           </a>
